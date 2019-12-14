@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="css/login.min.css">
+<link rel="stylesheet" href="css/fork-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+<section class="hero is-success is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-4 is-offset-4">
+        <h3 class="title">Login</h3>
+        <hr class="login-hr">
+        <p class="subtitle">Please login to proceed.</p>
+        <div class="box">
+          <figure class="avatar">
+            <img src="img/user-avatar0.png" height="128" width="128">
+          </figure>
+          <form action=/post1 method=POST>
+            <div class="field">
+                <p id="message"></p>
+              <p class="control has-icons-left has-icons-right">
+                <input class="input is-large is-link" type="email" placeholder="Your Email" autofocus=""
+                  name="email" id="email">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <p class="control has-icons-left">
+                <input class="input is-large is-link" type="password" placeholder="Your Password"
+                  name="password" id="password">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+              </p>
+              <meter max="4" id="password-strength-meter"></meter>
+		          <p id="password-strength-text"></p>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Login<i class="fa fa-sign-in"
+                aria-hidden="true"></i></button>
+          </form>
+        </div>
+        <p class="has-text-grey">
+          <a href="../">Sign Up</a> &nbsp;·&nbsp;
+          <a href="../">Forgot Password</a> &nbsp;·&nbsp;
+          <a href="../">Need Help?</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block script %}
+<script src="js/login.min.js"></script>
+{% endblock %}
