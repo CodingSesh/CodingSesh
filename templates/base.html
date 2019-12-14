@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=7">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/main.min.css">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    {% if current_page == "home" %}
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    {% else %}
+    <nav class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
+    {% endif -%}
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <h2><b>CodingSesh</b></h2>
+            </a>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbar" class="navbar-menu">
+            <div class="navbar-end has-text-centered">
+                <a class="navbar-item" href="/features">FEATURES</a>
+                <a class="navbar-item" href="/docs">DOCS</a>
+                <a class="navbar-item" href="faq">FAQ</a>
+                <a class="button is-link is-fullwidth is-rounded" href="/signup">Sign Up</a>
+                <br class="su-li"/>
+                {% if current_page == "home" %}
+                <a class="button is-link is-inverted is-outlined is-fullwidth is-rounded" href="/login">Log In</a>
+                {% else if current_page == "login" %}
+                <a class="button is-link is-outlined is-fullwidth is-rounded" href="/login">Log In</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer class="footer has-background-dark">
+        <div class="content has-text-centered has-text-white">
+            {% if current_page == "home" %}
+            <div class="columns is-desktop">    
+                <div class="column">
+                    <h3>CodingSesh</h3>
+                    <p>About Us</p>
+                    <p>Terms / Privacy</p>
+                    <p class="credit">&copy; 2019 CodingSesh</p>
+                </div>
+                <div class="column">
+                    <h3>PRODUCT</h3>
+                    <p>Supported IDEs</p>
+                    <p>Goals</p>
+                    <p>Teams</p>
+                    <p>Education</p>
+                </div>
+                <div class="column">
+                    <h3>LEARN</h3>
+                    <p>API Docs</p>
+                    <p>FAQ</p>
+                    <p>Plugin Status</p>
+                    <p>Troubleshooting</p>
+                </div>
+                <div class="column">
+                    <h3 style="color: white;">COMMUNITY</h3>
+                    <p>User Creations</p>
+                    <p>GitHub</p>
+                    <p>Reddit</p>
+                </div>
+            </div>
+            {% else if current_page == "features" %}
+            <div class="columns is-desktop">    
+                <div class="column">
+                    <h3 style="color: white;">CodingSesh</h3>
+                    <p>About Us</p>
+                    <p>Terms / Privacy</p>
+                    <p class="credit">&copy; 2019 CodingSesh</p>
+                </div>
+                <div class="column">
+                    <h3 style="color: white;">PRODUCT</h3>
+                    <p>Supported IDEs</p>
+                    <p>Goals</p>
+                    <p>Teams</p>
+                    <p>Education</p>
+                </div>
+                <div class="column">
+                    <h3 style="color: white;">LEARN</h3>
+                    <p>API Docs</p>
+                    <p>FAQ</p>
+                    <p>Plugin Status</p>
+                    <p>Troubleshooting</p>
+                </div>
+                <div class="column">
+                    <h3 style="color: white;">COMMUNITY</h3>
+                    <p>User Creations</p>
+                    <p>GitHub</p>
+                    <p>Reddit</p>
+                </div>
+            </div>
+            {% else %}
+            <div class='rows'>
+                <div class="row">
+                    <span>&copy;2019 CodingSesh</span>
+                    <span>Terms</span>
+                    <span>Privacy</span>
+                    <span>Open Source</span>
+                </div>
+                <div class="row">
+                    <span>Supported IDEs</span>
+                    <span>Integrations</span>
+                    <span>Help</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </footer>
+</body>
+<script src="js/main.min.js"></script>
+{% block script %}{% endblock %}
+</html>
