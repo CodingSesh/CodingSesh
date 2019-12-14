@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<section class="hero is-link is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                The developer dashboard
+            </h1>
+            <h2 class="subtitle">
+                Open source editor plugins for metrics about your programming.
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="section" style="background-color: #35434f;">
+    <div class="container has-text-centered has-text-white content">
+        <h1 style="color: white;">Trusted by top programmers</h1>
+        <h2 style="color: white;">{{ editor_count }}</h2>
+        <p>Editors Supported</p>
+        <h2 style="color: white;">{{ lang_count }}</h2>
+        <p>Languages Detected</p>
+    </div>
+</section>
+<section class="section" >
+    <div class="container has-text-centered content">
+        <h1>Improve your productivity</h1>
+        <ul style="display: inline-block; text-align: left;">
+            <li>Project, language, branch detected automatically</li>
+            <li>Goals to code more(or less) in a project or language</li>
+            <li>Automatically track time spent programming</li>
+        </ul>
+    </div>
+</section>
+<section class="section" style="background-color: #35434f;">
+    <div class="container has-text-centered has-text-white content">
+        <h1 style="color: white;">Safe, secure, free</h1>
+        <div style="display: inline-block; text-align: left;">
+            <p><span style="color: green;">&#10004; </span> We never access your source code</p>
+            <p><span style="color: green;">&#10004; </span> Your dashboard is private</p>
+            <p><span style="color: green;">&#10004; </span> Export all your metrics anytime for free</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
