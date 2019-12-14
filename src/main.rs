@@ -1,7 +1,8 @@
-#[macro_use]extern crate serde_derive;
+#[macro_use]
+extern crate serde_derive;
 
 use actix_files as fs;
-use actix_web::{web, App, HttpRequest, HttpResponse, HttpServer, Responder, Result, test};
+use actix_web::{test, web, App, HttpRequest, HttpResponse, HttpServer, Responder, Result};
 use askama::Template;
 use termion::color;
 
@@ -16,21 +17,21 @@ struct Dashboard {
 #[template(path = "user.html")]
 struct UserTemplate {
     name: String,
-    text: String
+    text: String,
 }
 
 #[derive(Template)]
 #[template(path = "index.html")]
-struct Index{
+struct Index {
     title: &'static str,
     current_page: &'static str,
     editor_count: u32,
-    lang_count: u32
+    lang_count: u32,
 }
 
 #[derive(Template)]
 #[template(path = "login.html")]
-struct Login{
+struct Login {
     title: &'static str,
     current_page: &'static str,
 }
@@ -48,7 +49,7 @@ async fn index() -> Result<HttpResponse> {
         title: "CodingSesh · The Open Source Developer Dashboard",
         current_page: "home",
         editor_count: 0,
-        lang_count: 0
+        lang_count: 0,
     }
     .render()
     .unwrap();
@@ -79,7 +80,7 @@ async fn dashboard() -> Result<HttpResponse> {
 async fn handle_post_1(params: web::Form<LoginCredentials>) -> Result<HttpResponse> {
     let user = UserTemplate {
         name: params.email.to_string(),
-        text: params.password.to_string()
+        text: params.password.to_string(),
     }
     .render()
     .expect("Error: Failed to Render user.html");
@@ -101,11 +102,9 @@ fn app_config(config: &mut web::ServiceConfig) {
 async fn main() {
     info(true);
     // start http server
-    HttpServer::new(move || {
-        App::new()
-            .configure(app_config)
-    })
-        .bind(ADDR).expect("Error: Failed to bind Address")
+    HttpServer::new(move || App::new().configure(app_config))
+        .bind(ADDR)
+        .expect("Error: Failed to bind Address")
         .start()
         .await;
 }
@@ -118,39 +117,42 @@ fn info(debug: bool) {
             color::Fg(color::White),
             color::Fg(color::Blue),
             color::Fg(color::White),
-            );
-            println!(
-                "{}    => {}Max Concurrent Connections per Worker Rate: {}256",
-                color::Fg(color::White),
-                color::Fg(color::Blue),
-                color::Fg(color::White),
-            );
-            println!(
-                "{}    => {}Client Timeout: {}5s",
-                color::Fg(color::White),
-                color::Fg(color::Blue),
-                color::Fg(color::White),
-            );
-            println!(
-                "{}    => {}Client Shutdown: {}5s",
-                color::Fg(color::White),
-                color::Fg(color::Blue),
-                color::Fg(color::White),
-            );
-            println!(
-                "{}    => {}Shutdown Timeout: {}30s",
-                color::Fg(color::White),
-                color::Fg(color::Blue),
-                color::Fg(color::White),
-            );
-            println!(
-                "{}    => {}Workers: {}12",
-                color::Fg(color::White),
-                color::Fg(color::Blue),
-                color::Fg(color::White),
-            );
+        );
+        println!(
+            "{}    => {}Max Concurrent Connections per Worker Rate: {}256",
+            color::Fg(color::White),
+            color::Fg(color::Blue),
+            color::Fg(color::White),
+        );
+        println!(
+            "{}    => {}Client Timeout: {}5s",
+            color::Fg(color::White),
+            color::Fg(color::Blue),
+            color::Fg(color::White),
+        );
+        println!(
+            "{}    => {}Client Shutdown: {}5s",
+            color::Fg(color::White),
+            color::Fg(color::Blue),
+            color::Fg(color::White),
+        );
+        println!(
+            "{}    => {}Shutdown Timeout: {}30s",
+            color::Fg(color::White),
+            color::Fg(color::Blue),
+            color::Fg(color::White),
+        );
+        println!(
+            "{}    => {}Workers: {}12",
+            color::Fg(color::White),
+            color::Fg(color::Blue),
+            color::Fg(color::White),
+        );
     } else {
-        println!("{}    🔧  Configured for production", color::Fg(color::Blue));
+        println!(
+            "{}    🔧  Configured for production",
+            color::Fg(color::Blue)
+        );
     }
     println!(
         "{}    => {}Serving On: {}http://{}/",
