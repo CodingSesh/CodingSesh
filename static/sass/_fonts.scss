@@ -1,0 +1,25 @@
+$fira-font-path: "../fonts/Fira/" !default;
+
+@font-face{
+  font-family: 'Fira Sans';
+  src: url("#{$fira-font-path}eot/FiraSans-Regular.eot");
+  src: local("Fira Sans Regular"), 
+  url("#{$fira-font-path}woff2/FiraSans-Regular.woff2") format("woff2"), 
+    url("#{$fira-font-path}woff/FiraSans-Regular.woff") format("woff"), 
+    url("#{$fira-font-path}ttf/FiraSans-Regular.ttf") format("truetype"),
+    url("#{$fira-font-path}eot/FiraSans-Regular.eot") format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  src: url("#{$fira-font-path}eot/FiraMono-Regular.eot");
+  src: local("Fira Mono"), 
+    url("#{$fira-font-path}woff2/FiraMono-Regular.woff2") format("woff2"), 
+    url("#{$fira-font-path}woff/FiraMono-Regular.woff") format("woff"), 
+    url("#{$fira-font-path}ttf/FiraMono-Regular.ttf") format("truetype"),
+    url("#{$fira-font-path}eot/FiraMono-Regular.eot") format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+}
