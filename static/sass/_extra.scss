@@ -1,0 +1,16 @@
+.su-li {
+    content: "";
+    margin: 2em;
+    display: block;
+    font-size: 20%;
+    line-height: 1.5;
+    padding: .5rem, .75rem;
+}
+
+.rows{
+    display: flex;
+    flex-direction: column;
+    span {
+        margin: 0px 10px;
+    }
+}
