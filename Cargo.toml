@@ -29,6 +29,9 @@ uuid = { version = "0.5", features = ["serde", "v4"] }
 [build-dependencies]
 askama = "0.8"
 
+[dev-dependencies]
+rusty-hook = "^0.10.1"
+
 # The release profile, used for `cargo build --release`.
 [profile.release]
 opt-level = 3
