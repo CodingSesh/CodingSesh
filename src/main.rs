@@ -97,6 +97,20 @@ fn app_config(config: &mut web::ServiceConfig) {
     );
 }
 
+#[cfg(target_family = "unix")]
+#[actix_rt::main]
+async fn main() {
+    info(true);
+    // start http server
+    HttpServer::new(move || App::new().configure(app_config))
+        .bind(ADDR)
+        .expect("Error: Failed to bind Address")
+        .start()
+        .await
+        .expect("Error: Failed to create HTTP Server")
+}
+
+#[cfg(target_family = "windows")]
 #[actix_rt::main]
 async fn main() {
     info(true);
