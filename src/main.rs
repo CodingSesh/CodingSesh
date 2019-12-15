@@ -4,7 +4,6 @@ extern crate serde_derive;
 use actix_files as fs;
 use actix_web::{test, web, App, HttpRequest, HttpResponse, HttpServer, Responder, Result};
 use askama::Template;
-use termion::color;
 
 #[derive(Template)]
 #[template(path = "dashboard.html")]
@@ -109,7 +108,9 @@ async fn main() {
         .await;
 }
 
+#[cfg(target_family = "unix")]
 fn info(debug: bool) {
+    use termion::color;
     if debug {
         println!("{}    🔧  Configured for debug", color::Fg(color::Blue));
         println!(
