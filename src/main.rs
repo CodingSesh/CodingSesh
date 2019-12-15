@@ -97,7 +97,7 @@ fn app_config(config: &mut web::ServiceConfig) {
     );
 }
 
-#[cfg(target_family = "unix")]
+
 #[actix_rt::main]
 async fn main() {
     info(true);
@@ -110,7 +110,7 @@ async fn main() {
         .expect("Error: Failed to create HTTP Server")
 }
 
-#[cfg(target_family = "windows")]
+#[cfg(target_family = "unix")]
 #[actix_rt::main]
 async fn main() {
     info(true);
@@ -177,4 +177,36 @@ fn info(debug: bool) {
         color::Fg(color::White),
         ADDR
     )
+}
+
+#[cfg(target_family = "unix")]
+#[actix_rt::main]
+async fn main() {
+    info(true);
+    // start http server
+    HttpServer::new(move || App::new().configure(app_config))
+        .bind(ADDR)
+        .expect("Error: Failed to bind Address")
+        .start()
+        .await
+        .expect("Error: Failed to create HTTP Server")
+}
+
+#[cfg(target_family = "windows")]
+fn info(debug: bool) {
+    use termion::color;
+    if debug {
+        println!("    🔧  Configured for debug");
+        println!(
+            "    => Max Concurrent Connections per Worker: 25k");
+        println!(
+            "    => Max Concurrent Connections per Worker Rate: 256");
+        println!("    => Client Timeout: 5s");
+        println!("    => Client Shutdown: 5s");
+        println!("    => Shutdown Timeout: 30s");
+        println!("    => Workers: 12");
+    } else {
+        println!("    🔧  Configured for production");
+    }
+    println!("    => Serving On: http://{}/", ADDR);
 }
