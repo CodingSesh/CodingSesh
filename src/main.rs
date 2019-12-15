@@ -2,7 +2,7 @@
 extern crate serde_derive;
 
 use actix_files as fs;
-use actix_web::{test, web, App, HttpRequest, HttpResponse, HttpServer, Responder, Result};
+use actix_web::{web, App, HttpResponse, HttpServer, Result};
 use askama::Template;
 
 #[derive(Template)]
@@ -105,7 +105,8 @@ async fn main() {
         .bind(ADDR)
         .expect("Error: Failed to bind Address")
         .start()
-        .await;
+        .await
+        .expect("Error: Failed to create HTTP Server")
 }
 
 #[cfg(target_family = "unix")]
