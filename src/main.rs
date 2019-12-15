@@ -170,10 +170,8 @@ fn info(debug: bool) {
     use termion::color;
     if debug {
         println!("    🔧  Configured for debug");
-        println!(
-            "    => Max Concurrent Connections per Worker: 25k");
-        println!(
-            "    => Max Concurrent Connections per Worker Rate: 256");
+        println!("    => Max Concurrent Connections per Worker: 25k");
+        println!("    => Max Concurrent Connections per Worker Rate: 256");
         println!("    => Client Timeout: 5s");
         println!("    => Client Shutdown: 5s");
         println!("    => Shutdown Timeout: 30s");
