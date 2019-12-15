@@ -167,7 +167,6 @@ fn info(debug: bool) {
 
 #[cfg(target_family = "windows")]
 fn info(debug: bool) {
-    use termion::color;
     if debug {
         println!("    🔧  Configured for debug");
         println!("    => Max Concurrent Connections per Worker: 25k");
