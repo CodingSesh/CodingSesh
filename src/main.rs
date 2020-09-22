@@ -111,7 +111,10 @@ async fn main() -> std::io::Result<()> {
 fn info(debug: bool) {
     use termion::color;
     if debug {
-        println!("{}    \u{1f527}  Configured for debug", color::Fg(color::Blue));
+        println!(
+            "{}    \u{1f527}  Configured for debug",
+            color::Fg(color::Blue)
+        );
         println!(
             "{}    => {}Max Concurrent Connections per Worker: {}25k",
             color::Fg(color::White),
