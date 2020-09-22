@@ -101,13 +101,10 @@ fn app_config(config: &mut web::ServiceConfig) {
 async fn main() -> std::io::Result<()> {
     info(true);
     // start http server
-    HttpServer::new(|| {
-        App::new()
-            .configure(app_config)
-    })
-    .bind("127.0.0.1:8080")?
-    .run()
-    .await
+    HttpServer::new(|| App::new().configure(app_config))
+        .bind("127.0.0.1:8080")?
+        .run()
+        .await
 }
 
 #[cfg(target_family = "unix")]
