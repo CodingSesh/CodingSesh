@@ -41,7 +41,7 @@ pub struct LoginCredentials {
     password: String,
 }
 
-const ADDR: &'static str = "127.0.0.1:9190";
+const ADDR: &str = "127.0.0.1:9190";
 
 async fn index() -> Result<HttpResponse> {
     let index = Index {
@@ -97,16 +97,17 @@ fn app_config(config: &mut web::ServiceConfig) {
     );
 }
 
-#[actix_rt::main]
-async fn main() {
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
     info(true);
     // start http server
-    HttpServer::new(move || App::new().configure(app_config))
-        .bind(ADDR)
-        .expect("Error: Failed to bind Address")
-        .start()
-        .await
-        .expect("Error: Failed to create HTTP Server")
+    HttpServer::new(|| {
+        App::new()
+            .configure(app_config)
+    })
+    .bind("127.0.0.1:8080")?
+    .run()
+    .await
 }
 
 #[cfg(target_family = "unix")]
