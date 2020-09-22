@@ -45,7 +45,7 @@ const ADDR: &str = "127.0.0.1:9190";
 
 async fn index() -> Result<HttpResponse> {
     let index = Index {
-        title: "CodingSesh · The Open Source Developer Dashboard",
+        title: "CodingSesh \u{b7} The Open Source Developer Dashboard",
         current_page: "home",
         editor_count: 0,
         lang_count: 0,
@@ -57,7 +57,7 @@ async fn index() -> Result<HttpResponse> {
 
 async fn login() -> Result<HttpResponse> {
     let login = Login {
-        title: "Login · CodingSesh",
+        title: "Login \u{b7} CodingSesh",
         current_page: "login",
     }
     .render()
@@ -67,7 +67,7 @@ async fn login() -> Result<HttpResponse> {
 
 async fn dashboard() -> Result<HttpResponse> {
     let db = Dashboard {
-        title: "Your Dashboard · CodingSesh",
+        title: "Your Dashboard \u{b7} CodingSesh",
         current_page: "dashboard",
     }
     .render()
@@ -111,7 +111,7 @@ async fn main() -> std::io::Result<()> {
 fn info(debug: bool) {
     use termion::color;
     if debug {
-        println!("{}    🔧  Configured for debug", color::Fg(color::Blue));
+        println!("{}    \u{1f527}  Configured for debug", color::Fg(color::Blue));
         println!(
             "{}    => {}Max Concurrent Connections per Worker: {}25k",
             color::Fg(color::White),
@@ -150,7 +150,7 @@ fn info(debug: bool) {
         );
     } else {
         println!(
-            "{}    🔧  Configured for production",
+            "{}    \u{1f527}  Configured for production",
             color::Fg(color::Blue)
         );
     }
@@ -166,7 +166,7 @@ fn info(debug: bool) {
 #[cfg(target_family = "windows")]
 fn info(debug: bool) {
     if debug {
-        println!("    🔧  Configured for debug");
+        println!("    \u{1f527}  Configured for debug");
         println!("    => Max Concurrent Connections per Worker: 25k");
         println!("    => Max Concurrent Connections per Worker Rate: 256");
         println!("    => Client Timeout: 5s");
@@ -174,7 +174,7 @@ fn info(debug: bool) {
         println!("    => Shutdown Timeout: 30s");
         println!("    => Workers: 12");
     } else {
-        println!("    🔧  Configured for production");
+        println!("    \u{1f527}  Configured for production");
     }
     println!("    => Serving On: http://{}/", ADDR);
 }
