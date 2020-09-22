@@ -31,8 +31,10 @@ termion = "1.5.4"
 [build-dependencies]
 askama = "0.8"
 
-[dev-dependencies]
-rusty-hook = "^0.10.1"
+[dev-dependencies.cargo-husky]
+version = "1"
+default-features = false # Disable features which are enabled by default
+features = ["precommit-hook", "run-cargo-test", "run-cargo-clippy", "run-cargo-fmt"]
 
 # The release profile, used for `cargo build --release`.
 [profile.release]

@@ -51,7 +51,7 @@ Please consider putting one of the following prefixes in the title of your pull-
 
 **Note**: To work with CodeingSesh you must use rustup. Linux package managers typically carry a too old rust version. See build docs for more info.
 
-CodeingSesh uses rusty hooks(git hooks) to write better code that just works. They require rustfmt and clippy to be installed to work properly. To install run
+CodeingSesh uses cargo husky(git hooks) to write better code that just works. They require rustfmt and clippy to be installed to work properly. To install run
 
 ```sh
 rustup update
@@ -61,11 +61,13 @@ rustup component add rustfmt clippy
 CodeingSesh also uses [git journal](https://github.com/saschagrunert/git-journal)(The Git Commit Message and Changelog Generation Framework) which needs to be installed before commiting.
 
 Via Cargo
+
 ```sh
 cargo install git-journal
 ```
 
 Or if you use Arch Linux
+
 ```sh
-sudo pacman -S rust cargo
+yay -S git-journal
 ```
